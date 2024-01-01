@@ -1,0 +1,105 @@
+
+*{
+  margin: 0 0;
+  padding: 0 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper{
+  padding: 1%;
+  margin: 0 auto;
+  width: 80%;
+  text-align: inline;
+}
+.menu{
+  text-align: center;
+  border-bottom: 1px solid rgba(144, 44, 238, 0.288) ;
+}
+.menu ul{
+ list-style-type: none;
+}
+.menu ul li{
+  display: inline;
+  padding: 1%;
+ }
+ .menu ul li a{
+    text-decoration: none;
+    font-weight: bold;
+    color :rgb(132, 28, 230);
+ }
+ .menu ul li a:hover{
+  color :rgb(154, 68, 235);
+}
+
+.text-center{
+   text-align: center;
+}
+
+.main-content{
+    margin: 1% 0;
+    background-color: gainsboro;
+
+}
+.clearfix{
+  float: none;
+  clear: both;
+}
+.tbl-full{
+  width: 100%;
+}
+table tr th{
+  border-bottom: 1px solid black;
+  padding: 1%;
+  text-align: left;
+}
+table tr td{
+  padding: 1%;
+
+}
+
+.tbl-admin{
+  width: 30%;
+}
+.btn-primary{
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: bold;
+    background-color: blueviolet;
+    padding: 1%;
+}
+.btn-primary:hover{
+  background-color :rgb(161, 81, 236);
+}
+.btn-secondary{
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: bold;
+  background-color: rgba(40, 238, 116, 0.788);
+  padding: 1%;
+}
+.btn-secondary:hover{
+background-color :rgba(40, 238, 116, 0.993);
+}
+.btn-secondary1{
+  text-decoration: none;
+  color: aliceblue;
+  font-weight: bold;
+  background-color: rgb(241, 61, 37);
+  padding: 1%;
+}
+.btn-secondary1:hover{
+background-color :rgba(236, 84, 64, 0.788);
+}
+
+
+.col-4{
+  margin: 1%;
+  padding: 2%;
+  width: 18%;
+  background-color: aliceblue;
+  float: left;
+}
+
+.footer{
+   background-color: blueviolet;
+   color: whitesmoke;
+}
