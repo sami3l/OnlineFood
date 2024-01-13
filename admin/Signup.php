@@ -5,9 +5,9 @@
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $admin->AAdmin($_POST);
-        header('Location: index.html');
+        header('Location: SA_home.php');
     }
-    
+
 
 ?>  
 

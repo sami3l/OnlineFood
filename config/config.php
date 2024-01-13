@@ -1,4 +1,3 @@
-
 <?php 
   
   class Database{
@@ -36,6 +35,17 @@
 
 
        }
+       public function login($query){
+
+        $result = mysqli_query($this->link,$query);
+        if(!$result){
+         return false;
+        }else{
+           return $result;
+        }
+
+
+      }
 
        public function show($query){
 

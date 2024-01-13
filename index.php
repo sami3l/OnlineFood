@@ -1,3 +1,17 @@
+
+
+<?php
+    include_once('config/config.php');
+    include_once('admin/classes/food.php');
+    include_once('admin/classes/category.php');
+    $category = new Category();
+    $food = new Food();
+
+    session_start();
+     
+?>  
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,17 +37,24 @@
             <div class="menu text-right">
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a><?php echo $_SESSION['username']?></a>
                     </li>
                     <li>
-                        <a href="categories.html">Categories</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="foods.html">Foods</a>
+                        <a href="categories.php">Categories</a>
+                    </li>
+                    <li>
+                        <a href="foods.php">Foods</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    <li>
+                        <a href="admin\logout.php">Logout</a>
+                    </li>
+    
                 </ul>
             </div>
 
@@ -60,30 +81,25 @@
         <div class="container">
             <h2 class="text-center">Explore Foods</h2>
 
-            <a href="category-foods.html">
-            <div class="box-3 float-container">
-                <img src="images/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
-
-            <a href="#">
+            <?php 
+                   $show = $category->show();
+                   if ($show) {
+                    while ($row = mysqli_fetch_assoc($show)) {
+                        ?>
+                        <a href="#">
             <div class="box-3 float-container">
                 <img src="images/burger.jpg" alt="Burger" class="img-responsive img-curve">
 
-                <h3 class="float-text text-white">Burger</h3>
+                 <td><?=$row['title']?></td>
+ 
             </div>
             </a>
-
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/momo.jpg" alt="Momo" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Momo</h3>
-            </div>
-            </a>
-
+                       
+                        <?php
+ 
+                   }
+                  }
+                 ?>
             <div class="clearfix"></div>
         </div>
     </section>
@@ -92,109 +108,40 @@
     <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">
         <div class="container">
-            <h2 class="text-center">Food Menu</h2>
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
+            
+    <?php 
+                   $show = $food->show();
+                   if ($show) {
+                    while ($row = mysqli_fetch_assoc($show)) {
+                      $foodId = intval($row['id']); 
+                      
+                       ?>
 
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
+                       <section class="food-menu">
+                       <div class="container">
+                        <h2 class="text-center">Food Menu</h2>
 
-                    <a href="order.html" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
+                        <div class="food-menu-box">
+                           <div class="food-menu-img">
+                           <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-burger.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Smoky Burger</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
+                           <h4><?=$row['title']?></h4>
+                           <p class="food-price"><?=$row['price']?></p>
+                           <p class="food-detail">
+                              <?=$row['description']?>
+                           </p>
+                          <br>
 
                     <a href="#" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-burger.jpg" alt="Chicke Hawain Burger" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Nice Burger</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-momo.jpg" alt="Chicke Hawain Momo" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Chicken Steam Momo</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
+                     
+                       <?php
+ 
+                   }
+                  }
+                 ?>
 
 
             <div class="clearfix"></div>
@@ -204,7 +151,7 @@
         </div>
 
         <p class="text-center">
-            <a href="#">See All Foods</a>
+            <a href="foods.php">See All Foods</a>
         </p>
     </section>
     <!-- fOOD Menu Section Ends Here -->
@@ -227,13 +174,6 @@
     </section>
     <!-- social Section Ends Here -->
 
-    <!-- footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Vijay Thapa</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
 
 </body>
 </html>

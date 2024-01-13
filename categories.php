@@ -2,7 +2,8 @@
 
 
 <?php
-    include_once('../admin/classes/category.php');
+    include_once('config/config.php');
+    include_once('admin/classes/category.php');
     $category = new Category();
      
 ?>  
@@ -31,16 +32,16 @@
             <div class="menu text-right">
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="categories.html">Categories</a>
+                        <a href="categories.php">Categories</a>
                     </li>
                     <li>
-                        <a href="foods.html">Foods</a>
+                        <a href="foods.php">Foods</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="admin\logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -50,43 +51,26 @@
     </section>
     <!-- Navbar Section Ends Here -->
 
-
-
-    <!-- CAtegories Section Starts Here -->
-    <section class="categories">
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/pizza.jpg" alt="Pizza" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Pizza</h3>
-            </div>
-            </a>
-
-            <a href="#">
+    <?php 
+                   $show = $category->show();
+                   if ($show) {
+                    while ($row = mysqli_fetch_assoc($show)) {
+                        ?>
+                        <a href="#">
             <div class="box-3 float-container">
                 <img src="images/burger.jpg" alt="Burger" class="img-responsive img-curve">
 
-                <h3 class="float-text text-white">Burger</h3>
+                 <td><?=$row['title']?></td>
+ 
             </div>
             </a>
+                       
+                        <?php
+ 
+                   }
+                  }
+                 ?>
 
-            <a href="#">
-            <div class="box-3 float-container">
-                <img src="images/momo.jpg" alt="Momo" class="img-responsive img-curve">
-
-                <h3 class="float-text text-white">Momo</h3>
-            </div>
-            </a>
-
-            
-
-            <div class="clearfix"></div>
-        </div>
-    </section>
-    <!-- Categories Section Ends Here -->
-
-
-    <!-- social Section Starts Here -->
     <section class="social">
         <div class="container text-center">
             <ul>
@@ -103,14 +87,6 @@
         </div>
     </section>
     <!-- social Section Ends Here -->
-
-    <!-- footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Vijay Thapa</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
 
 </body>
 </html>

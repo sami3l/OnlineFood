@@ -4,9 +4,6 @@ session_start();
 
  ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -22,21 +19,21 @@ session_start();
         <div class="container">
 
           <div class="jumbotron">
-            <h1>Login to your account</h1> <br>
-            <form class="" action="Signin.php" method="POST"> <br><br>
-              <input type="text" class="form-control" placeholder="Usename/ Email Address" name="mail" value="">
+            <h1>Login As Admin</h1> <br>
+            <form class="" action="Alogin.php" method="POST"> <br><br>
+              <input type="username" class="form-control" placeholder="Usename/ Email Address" name="mail" value="">
               <br>
               <input type="password" class="form-control" placeholder="Password" name="pass" value="">
               <br><br>
 
               <div class="loginbutton">
                 <button type="submit" class="btn btn-success btn-lg" name="login" >Login</button>
-                <a href="admin-login.php">login as admin</a>
+                
 
               </div>
               </form>
 
-
+        
 
   </header>
   <footer class="page-footer font-small blue">

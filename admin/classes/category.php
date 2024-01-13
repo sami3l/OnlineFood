@@ -1,54 +1,60 @@
-
 <?php
 
-    include_once("../config/config.php");
-    class Category{
-        
-         public $db;
-      public function __construct(){ 
-           $this->db = new Database();
-      }
+class Category
+{
+    public $db;
 
-      public function ACategory($data){
-          $title = $data["title"];
-          $active = $data["active"];
+    public function __construct()
+    {
+        $this->db = new Database();
+    }
 
-          $query = "INSERT INTO `tbl_category`(`title`, `active`) VALUES ('$title' , '$active')";
-           
-          $result = $this->db->insert($query);
-            if($result){
-          echo 'succes';
-       }
-     }  
+    public function ACategory($data)
+    {
+        $title = $data["title"];
+        $active = $data["active"];
 
-      public function show( ){
+        $query = "INSERT INTO `tbl_category`(`title`, `active`) VALUES ('$title' , '$active')";
 
-        $query = "SELECT * FROM `tbl_category` ORDER BY id DESC"; 
+        $result = $this->db->insert($query);
+        if ($result) {
+            echo 'success';
+        }
+    }
+
+    public function show()
+    {
+        $query = "SELECT * FROM `tbl_category` ORDER BY id DESC";
         $res = $this->db->show($query);
         return $res;
-
     }
-    
-    public function showid($id){
 
-      $query = "SELECT * FROM `tbl_category` WHERE id = '$id'"; 
-      $res = $this->db->show($query);
-      return $res;
+    public function showid($id)
+    {
+        $query = "SELECT * FROM `tbl_category` WHERE id = '$id'";
+        $res = $this->db->show($query);
+        return $res;
+    }
 
-  }
+    public function update($data, $file, $id)
+    {
+        $title = $data["title"];
+        $active = $data["active"];
 
-  public function update($data , $file , $id){
+        $query = "UPDATE tbl_category SET title  = '$title' , active = '$active' WHERE id = '$id'";
 
-    $title = $data["title"];
-    $active = $data["active"];
+        $result = $this->db->insert($query);
+        if ($result) {
+            echo 'success';
+        }
+    }
 
-    $query = "UPDATE tbl_category SET title  = '$title' , active = '$active' WHERE id = '$id' ";
-     
-    $result = $this->db->insert($query);
-      if($result){
-     echo 'succes';
- }
-
+    // New method to get all categories
+    public function getCategories()
+    {
+        $query = "SELECT * FROM `tbl_category` ORDER BY id DESC";
+        $res = $this->db->show($query);
+        return $res;
+    }
 }
-}
-?>  
+?>

@@ -9,7 +9,7 @@
     $conn = new Database();
     $conn->dbconnect();
 
-    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password' ";
+    $sql = "SELECT * FROM admin WHERE username = '$username' AND password = '$password' ";
 
     $result = $conn->insert($sql);
 
@@ -18,7 +18,7 @@
     }else {
 
         $_SESSION['username'] = $username;
-        header("Location: ../index.php");
+        header("Location: SA_home.php");
       }
 
     

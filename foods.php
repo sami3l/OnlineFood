@@ -1,3 +1,12 @@
+
+
+<?php
+    include_once('config/config.php');
+    include_once('admin/classes/food.php');
+    $food = new Food();
+     
+?>  
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,16 +32,16 @@
             <div class="menu text-right">
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="index.php">Home</a>
                     </li>
                     <li>
-                        <a href="categories.html">Categories</a>
+                        <a href="categories.php">Categories</a>
                     </li>
                     <li>
-                        <a href="foods.html">Foods</a>
+                        <a href="foods.php">Foods</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="admin\logout.php">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -55,124 +64,39 @@
     </section>
     <!-- fOOD sEARCH Section Ends Here -->
 
+    <?php 
+                   $show = $food->show();
+                   if ($show) {
+                    while ($row = mysqli_fetch_assoc($show)) {
+                      $foodId = intval($row['id']); 
+                      
+                       ?>
 
+                       <section class="food-menu">
+                       <div class="container">
+                        <h2 class="text-center">Food Menu</h2>
 
-    <!-- fOOD MEnu Section Starts Here -->
-    <section class="food-menu">
-        <div class="container">
-            <h2 class="text-center">Food Menu</h2>
+                        <div class="food-menu-box">
+                           <div class="food-menu-img">
+                           <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-burger.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Smoky Burger</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
+                           <h4><?=$row['title']?></h4>
+                           <p class="food-price"><?=$row['price']?> $</p>
+                           <p class="food-detail">
+                              <?=$row['description']?>
+                           </p>
+                          <br>
 
                     <a href="#" class="btn btn-primary">Order Now</a>
                 </div>
             </div>
+                     
+                       <?php
+ 
+                   }
+                  }
+                 ?>
 
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-burger.jpg" alt="Chicke Hawain Burger" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Nice Burger</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-pizza.jpg" alt="Chicke Hawain Pizza" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Food Title</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-            <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/menu-momo.jpg" alt="Chicke Hawain Momo" class="img-responsive img-curve">
-                </div>
-
-                <div class="food-menu-desc">
-                    <h4>Chicken Steam Momo</h4>
-                    <p class="food-price">$2.3</p>
-                    <p class="food-detail">
-                        Made with Italian Sauce, Chicken, and organice vegetables.
-                    </p>
-                    <br>
-
-                    <a href="#" class="btn btn-primary">Order Now</a>
-                </div>
-            </div>
-
-
-            <div class="clearfix"></div>
-
-            
-
-        </div>
-
-    </section>
-    <!-- fOOD Menu Section Ends Here -->
 
     <!-- social Section Starts Here -->
     <section class="social">
@@ -192,13 +116,6 @@
     </section>
     <!-- social Section Ends Here -->
 
-    <!-- footer Section Starts Here -->
-    <section class="footer">
-        <div class="container text-center">
-            <p>All rights reserved. Designed By <a href="#">Vijay Thapa</a></p>
-        </div>
-    </section>
-    <!-- footer Section Ends Here -->
 
 </body>
 </html>

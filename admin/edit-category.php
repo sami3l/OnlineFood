@@ -33,10 +33,6 @@
               <form method="POST">  
           <table class="tbl-admin">
           <tr>
-            <td>id : </td>
-            <td><input type="text" name="id" value="<?=$row['id']?>" required></td>
-          </tr>
-          <tr>
             <td>Title : </td>
             <td><input type="text" name="title" value="<?=$row['title']?>" required></td>
           </tr>

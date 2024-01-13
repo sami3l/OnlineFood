@@ -36,9 +36,16 @@
       return $res;
 
   }
+
+  public function searchByName($name)
+{
+    $query = "SELECT * FROM `admin` WHERE username = '$name'";
+    $res = $this->db->show($query);
+    return $res;
+}
   public function login($username ,$password){
 
-    $query = "SELECT * FROM `admin` WHERE username = '$username' AND pasword = '$password'"; 
+    $query = "SELECT * FROM `admin` WHERE username = '$username' AND password = '$password'"; 
     $res = $this->db->show($query);
     return $res;
 

@@ -1,4 +1,6 @@
-<?php include('../config/config.php') ?>
+<?php include('../config/config.php') ;
+session_start();
+?>
 
 <html>
  <head>
@@ -11,10 +13,15 @@
           <div class="menu">
             <div class="wrapper">
               <ul>
-                <li><a href="index.php">Home</a></li>
+                <li><a><?php echo $_SESSION['username']?></a></li> 
+                <li><a href="SA_home.php">Home</a></li>
                 <li><a href="manage-admin.php">admin</a></li>
+                <li><a href="manage-user.php">users</a></li>
                 <li><a href="manage-category.php">category</a></li>
                 <li><a href="manage-food.php">food</a></li>
+              </ul>
+              <ul>
+                <li><a href="logout.php">Logout</a></li>
               </ul>
             </div>
           </div>

@@ -1,7 +1,6 @@
 
 <?php
 
-   include_once("../config/config.php");
     class Food{
         
          public $db;
